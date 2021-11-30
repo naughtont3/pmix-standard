@@ -724,7 +724,39 @@ Requests that the host environment deliver a copy of the specified output stream
 \declareAttributeNEW{PMIX_IOF_REDIRECT}{"pmix.iof.redir"}{bool}{
 Requests that the host environment intercept the specified output stream(s) and deliver it to the requesting tool instead of its current final destination. This might be used, for example, during a debugging procedure to avoid injection of debugger-related output into the application’s results file. The original output stream(s) destination is restored upon termination of the tool.
 }
-
+%--------
+% TJN: start by defining the IOF constants, then add to proper spots too
+%
+\declarAttributeNEW{PMIX_IOF_FILE_ONLY}{"pmix.iof.fonly"}(bool}{
+Output only into designated files - do not also output.
+}
+%
+\declarAttributeNEW{PMIX_IOF_FILE_PATTERN}{"pmix.iof.fpt"}{bool}{
+Specified output file is to be treated as a pattern and not a copy to stdout/stderr.
+}
+%
+\declarAttributeNEW{PMIX_IOF_LOCAL_OUTPUT}{"pmix.iof.local"}{bool}{
+Write output streams to local stdout/err.
+}
+%
+\declarAttributeNEW{PMIX_IOF_MERGE_STDERR_STDOUT}{"pmix.iof.mrg"}{bool}{
+Merge stdout and stderr streams from application procs.
+}
+%
+\declarAttributeNEW{PMIX_IOF_OUTPUT_TO_DIRECTORY}{"pmix.iof.dir"}{char*}{
+Direct application output into files of form $<directory>/<jobid>/rank.<rank>/stdout[err]$.
+}
+%
+\declarAttributeNEW{PMIX_IOF_OUTPUT_TO_FILE}{"pmix.iof.file"}{char*}{
+Direct application output into files of form $"<filename>.rank"$ with both stdout and stderr redirected into it.
+}
+%
+\declarAttributeNEW{PMIX_IOF_RANK_OUTPUT}{"pmix.iof.rank"}{bool}{
+Tag output with the rank it came from.
+}
+%
+% TJN: end
+%--------
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
